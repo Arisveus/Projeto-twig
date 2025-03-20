@@ -11,5 +11,5 @@ $comp = $dados->fetchAll(PDO::FETCH_ASSOC);
 
 echo $twig->render('compras.html', [
     'titulo' => 'Compras',
-    'compra' => 'comp',
+    'compras' => $comp,
 ]);
