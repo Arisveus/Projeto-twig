@@ -1,16 +1,29 @@
 <?php
-
+# compras_editar.php
+require_once('twig_carregar.php');
 require('inc/banco.php');
 
-$item = $_POST['item'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Get = Visualizar o formulário
+    $id = $_GET['id'] ?? null;
 
-if($item) {
-    // Prepara a consulta
-    $query = $pdo->prepare('UPDATE compras SET item =:item  WHERE id = :id');
+    if ($id) {
+        $item = $pdo->prepare('SELECT * FROM compras WHERE id = :id');
+        $item->execute([':id' => $id]);
+        $dados = $item->fetch();
 
-    $query->bindValue(':item', $item);
-    // Executa a consulta
-    $query->execute();
+        echo $twig->render('editar.html', [
+            'titulo' => 'Compras',
+            'dados' => $dados,
+        ]);
+    }
 }
-
-header('location:form.php');
+else {
+    // Post = Gravar os dados
+    $edit = $pdo->prepare('UPDATE compras SET item = :item WHERE id = :id');
+    $edit->execute([
+        ':item' => $_POST['item'],
+        ':id' => $_POST['id'],
+    ]);
+    header('location:compras.php');
+}
