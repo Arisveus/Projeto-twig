@@ -11,7 +11,7 @@
 <a href="compras.php">Voltar para a página de compras</a>
 <form action="compras_edit.php" method="post">
     <input type="hidden" name="id" value="<?php echo $item->getId(); ?>">
-    <input type="text" name="item" value="<?php echo $item->get(); ?>" placeholder="Item:">
+    <input type="text" name="item" value="<?php echo $item->getItem(); ?>" placeholder="Item:">
     <input type="submit" value="Adicionar">
 </form>
 </body>
