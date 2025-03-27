@@ -1,0 +1,27 @@
+{# templates/compromisso..html #}
+{% extends "_base.html" %}
+
+{% block conteudo %}
+Página de compromisssos
+
+<h3>Adicionar compromisso</h3>
+<form action="compromisso_adc.php" method="post">
+     <input type="text" name="titulo">Escreva o título do compromisso</input>
+     <input type="date" name="tiempo">Digite a data do compromisso
+     <input type="submit" value="Adicionar">
+</form>
+
+<h3>Minha Lista de compromissos</h3>
+<ul>
+     {% for compromisso in compromissos %}
+          <li>
+          {{ compromisso.titulo }}
+          {{ compromisso.tiempo }}
+          </li>
+          <a href="compromisso_edit.php?id={{ compromisso.id }}">Editar</a> 
+          <a href="compromisso_del.php?id={{ compromisso.id }}">Excluir</a>
+     {% endfor %}
+   
+</ul>
+
+{% endblock %}

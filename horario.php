@@ -9,11 +9,14 @@ use Carbon\Carbon;
  * Será possível acessar pelo menu
  * Devera mostrar a data de hoje e a data de amanhã 
 */ 
+$datah = Carbon::now();
+$dataa = Carbon::now()->addDay();
 
-echo "Data de hoje:" . Carbon::now() . '<br>';
-echo "Data de amanhã:" . Carbon::now()->addDay() . '<br>';
+echo "Data de hoje:". '<br>';
+echo "Data de amanhã:" . '<br>';
 
 echo $twig->render('horario.html', [
     'titulo' => 'Compras',
-    'compras' => $comp,
+    'dataa' => $dataa,
+    'datah' => $datah
 ]);
