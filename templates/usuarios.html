@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+{% block conteudo %}
+Página de Usuarios
+
+<h3>Adicionar usuario</h3>
+<form action="usuarios_adc.php" method="post">
+     <input type="text" name="login" placeholder="Digite o login">
+     <input type="password" name="senha" placeholder="Digite sua senha">
+     <input type="submit" value="Adicionar">
+</form>
+
+<h3>Lista de usuarios</h3>
+<ul>
+     {% for usuario in usuarios %}
+          <li>
+          {{ usuario.login }}
+          {{ usuario.senha }}
+          </li>
+     {% endfor %}
+   
+</ul>
+
+{% endblock %}

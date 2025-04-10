@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/03/2025 às 14:19
+-- Tempo de geração: 10/04/2025 às 15:46
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -37,7 +37,7 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id`, `item`) VALUES
-(1, 'Jararacado vale'),
+(1, 'Jararacado '),
 (2, 'Banana'),
 (4, 'Amora');
 
@@ -50,7 +50,26 @@ INSERT INTO `compras` (`id`, `item`) VALUES
 CREATE TABLE `compromissos` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
-  `time` date NOT NULL
+  `tiempo` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `compromissos`
+--
+
+INSERT INTO `compromissos` (`id`, `titulo`, `tiempo`) VALUES
+(3, 'Começo de estágio', '2025-04-02'),
+(4, 'A  BAZAR', '2025-03-19');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `login` varchar(255) NOT NULL,
+  `senha` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -83,7 +102,7 @@ ALTER TABLE `compras`
 -- AUTO_INCREMENT de tabela `compromissos`
 --
 ALTER TABLE `compromissos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
