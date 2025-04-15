@@ -1,6 +1,5 @@
 <?php
 
-require_once 'obrigaLogin.php'; 
 require_once('vendor/autoload.php');
 require('inc/banco.php');
 date_default_timezone_set('America/Sao_Paulo');

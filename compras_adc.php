@@ -1,6 +1,5 @@
 <?php
 
-require_once 'obrigaLogin.php'; 
 require('inc/banco.php');
 
 $item = $_POST['item'] ?? null;
