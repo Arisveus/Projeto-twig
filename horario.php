@@ -1,5 +1,6 @@
 <?php
 #horario.php
+require_once 'obrigaLogin.php'; 
 require_once('twig_carregar.php');
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -12,11 +13,11 @@ use Carbon\Carbon;
 $datah = Carbon::now();
 $dataa = Carbon::now()->addDay();
 
-echo "Data de hoje:". '<br>';
-echo "Data de amanhã:" . '<br>';
-
 echo $twig->render('horario.html', [
-    'titulo' => 'Compras',
+    'titulo' => 'Horário',
     'dataa' => $dataa,
     'datah' => $datah
 ]);
+echo '<br>';
+echo "Data de hoje:". '<br>';
+echo "Data de amanhã:" . '<br>';

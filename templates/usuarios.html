@@ -1,24 +1,22 @@
 {% extends "_base.html" %}
 
 {% block conteudo %}
-Página de Usuarios
+<h1>{{ titulo }}</h1>
 
-<h3>Adicionar usuario</h3>
+<h3>Adicionar usuário</h3>
 <form action="usuarios_adc.php" method="post">
-     <input type="text" name="login" placeholder="Digite o login">
-     <input type="password" name="senha" placeholder="Digite sua senha">
-     <input type="submit" value="Adicionar">
+    <input type="text" name="login" placeholder="Digite o login" required>
+    <input type="password" name="senha" placeholder="Digite sua senha" required>
+    <input type="submit" value="Adicionar">
 </form>
 
-<h3>Lista de usuarios</h3>
+<h3>Lista de usuários</h3>
 <ul>
-     {% for usuario in usuarios %}
-          <li>
-          {{ usuario.login }}
-          {{ usuario.senha }}
-          </li>
-     {% endfor %}
-   
+    {% for usuario in usuarios %}
+        <li>{{ usuario.login }} - {{ usuario.senha }}</li>
+        <a href="usuarios_del.php?id={{ usuario.id }}">Excluir</a>
+    {% else %}
+        <li>Nenhum usuário cadastrado.</li>
+    {% endfor %}
 </ul>
-
 {% endblock %}

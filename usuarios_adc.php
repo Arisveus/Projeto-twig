@@ -1,16 +1,18 @@
 <?php
 
+require_once 'obrigaLogin.php'; 
+require_once('vendor/autoload.php');
 require('inc/banco.php');
 
 $login = $_POST['login'] ?? null;
 $senha = $_POST['senha'] ?? null;
 
-if($item) {
+if($login && $senha) {
     // Prepara a consulta
     $query = $pdo->prepare('INSERT INTO usuarios (login,senha) VALUES(:login,:senha)');
     // Associa os valores dentro da consulta
     $query->bindValue(':login', $login);
-    $query->bindValue(':senha', $senha);
+    $query->bindValue(':senha', paswordHash($senha));
     
     // Executa a consulta
     $query->execute();

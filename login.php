@@ -1,12 +1,9 @@
 <?php
+
 session_start();
 require_once 'vendor/autoload.php';
 require_once('twig_carregar.php');
-
-$usuarios = [
-    'admin' => '1234',
-    'usuario' => 'senha'
-];
+require('inc/banco.php');
 
 // Se já estiver logado
 if (isset($_SESSION['usuario'])) {
@@ -16,16 +13,16 @@ if (isset($_SESSION['usuario'])) {
 
 // Se enviou o formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'] ?? '';
+    $usuario = $_POST['login'] ?? '';
     $senha = $_POST['senha'] ?? '';
     
  // Consulta no banco de dados
- $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = ?");
+ $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE login = ?");
  $stmt->execute([$usuario]);
  $usuarioBanco = $stmt->fetch();
 
  if ($usuarioBanco && $usuarioBanco['senha'] === $senha) {
-     $_SESSION['usuario'] = $usuarioBanco['usuario'];
+     $_SESSION['login'] = $usuarioBanco['login'];
      header('Location: compras.php');
      exit;
  } else {

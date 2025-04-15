@@ -1,13 +1,12 @@
 <?php
 
-
 require('inc/banco.php');
 
 $id = $_GET['id'] ?? null;
 
 if($id) {
     // Prepara a consulta
-    $query = $pdo->prepare('DELETE FROM compromissos WHERE id = :id');
+    $query = $pdo->prepare('DELETE FROM usuarios WHERE id = :id');
 
     // Executa a consulta
     $query->execute([
@@ -15,4 +14,4 @@ if($id) {
     ]);
 }
 
-header('location:compromissos.php');
+header('location:usuarios.php');
