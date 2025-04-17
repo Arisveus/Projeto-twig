@@ -1,5 +1,6 @@
 <?php
 #horario.php
+require_once('obrigaLogin.php');
 require_once('twig_carregar.php');
 date_default_timezone_set('America/Sao_Paulo');
 
