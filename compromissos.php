@@ -6,7 +6,7 @@ require('inc/banco.php');
 
 $dados = $pdo->query('SELECT * FROM compromissos ORDER BY titulo ASC');
 
-// Busca as compras no banco
+// Busca os compromissos no banco
 $compromissos = $dados->fetchAll(PDO::FETCH_ASSOC);
 
 

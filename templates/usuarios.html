@@ -10,15 +10,19 @@ Página de Usuarios
      <input type="submit" value="Adicionar">
 </form>
 
-<h3>Lista de usuarios</h3>
+<h3>Lista de usuários</h3>
 <ul>
-     {% for usuario in usuarios %}
-          <li>
-          {{ usuario.login }}
-          {{ usuario.senha }}
-          </li>
-     {% endfor %}
-   
+    {% for usuario in usuarios %}
+        <li>
+        {{ usuario.login }}
+        {{ usuario.senha }}
+        <br>
+        <a href="usuarios_del.php?id={{ usuarios.id }}">Excluir</a>
+        <a href="usuarios_edit.php?id={{ usuario.id }}">Trocar a senha</a>
+        </li>
+    {% else %}
+        <li>Nenhum usuário cadastrado.</li>
+    {% endfor %}
 </ul>
 
 {% endblock %}

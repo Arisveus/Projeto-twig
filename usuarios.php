@@ -5,7 +5,7 @@ require('inc/banco.php');
 
 $dados = $pdo->query('SELECT * FROM usuarios');
 
-// Busca as compras no banco
+// Busca os usuarios no banco
 $user = $dados->fetchAll(PDO::FETCH_ASSOC);
 
 

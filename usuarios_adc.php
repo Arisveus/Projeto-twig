@@ -1,19 +1,16 @@
 <?php
-
 require('inc/banco.php');
 
 $login = $_POST['login'] ?? null;
 $senha = $_POST['senha'] ?? null;
 
-if($item) {
-    // Prepara a consulta
-    $query = $pdo->prepare('INSERT INTO usuarios (login,senha) VALUES(:login,:senha)');
-    // Associa os valores dentro da consulta
+if ($login && $senha) {
+    $senhaHash = password_hash($senha);
+
+    $query = $pdo->prepare('INSERT INTO usuarios (login, senha) VALUES (:login, :senha)');
     $query->bindValue(':login', $login);
-    $query->bindValue(':senha', $senha);
-    
-    // Executa a consulta
+    $query->bindValue(':senha', $senhaHash);
     $query->execute();
 }
 
-header('location:usuarios.php');
+header('Location: usuarios.php');

@@ -12,11 +12,11 @@ use Carbon\Carbon;
 $datah = Carbon::now();
 $dataa = Carbon::now()->addDay();
 
-echo "Data de hoje:". '<br>';
-echo "Data de amanhã:" . '<br>';
-
 echo $twig->render('horario.html', [
     'titulo' => 'Compras',
     'dataa' => $dataa,
     'datah' => $datah
 ]);
+echo '<br>';
+echo "Data de hoje:". '<br>';
+echo "Data de amanhã:" . '<br>';
